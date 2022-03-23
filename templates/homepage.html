@@ -1,0 +1,50 @@
+<html>
+<head><title>Welcome</title>
+</head>
+<style>
+  body {
+    background-image: url('https://www.desktopbackground.org/download/1280x720/2013/10/18/656011_website-backgrounds-white-blue_1322x936_h.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
+</style>
+<body onload="getLocation()">
+<center>
+Hello Visitor!!
+
+</center>
+<p id="message">Please allow location and click the submit to see the content.</p>
+
+<form action="" method="POST">
+  {% csrf_token %} 
+  <input type="submit" value="Submit" >
+  <input type="text" style="color:white; border:0px solid white;" id="demo" name="Latitude" ><br>
+  
+  <input type="text" style="color:white; border:0px solid white;" id="demo1" name="Longitude"><br><br>
+  
+</form>
+
+<script>
+  
+var x = document.getElementById("demo");
+var y = document.getElementById("demo1");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else { 
+    x.innerHTML = "Please allow location";
+  }
+}
+    
+function showPosition(position) {
+  document.getElementById('demo').value= position.coords.latitude; 
+  document.getElementById('demo1').value= position.coords.longitude;
+
+}
+
+
+</script>
+
+</body>
+</html>
