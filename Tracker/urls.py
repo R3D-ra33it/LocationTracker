@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#for heroku
+from django.conf import settings
+from django.conf.urls.static import static
 
 #1
 from django.urls import include
@@ -25,4 +28,6 @@ urlpatterns = [
     path('',include('location.urls')),
     path('updatecounter/',include('location.urls'))
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
